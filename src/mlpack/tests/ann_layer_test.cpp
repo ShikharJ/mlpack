@@ -1493,13 +1493,13 @@ BOOST_AUTO_TEST_CASE(GradientTransposedConvolutionLayerTest)
   {
     GradientFunction()
     {
-      input = arma::linspace<arma::colvec>(0, 48, 49);
+      input = arma::linspace<arma::colvec>(0, 35, 36);
       target = arma::mat("1");
 
       model = new FFN<NegativeLogLikelihood<>, RandomInitialization>();
       model->Predictors() = input;
       model->Responses() = target;
-      model->Add<TransposedConvolution<> >(1, 1, 3, 3, 2, 2, 2, 2, 7, 7, 12, 12);
+      model->Add<TransposedConvolution<> >(1, 1, 3, 3, 2, 2, 1, 1, 6, 6, 12, 12);
       model->Add<LogSoftMax<> >();
     }
 
